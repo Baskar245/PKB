@@ -106,6 +106,9 @@ def update(id, status):
     return redirect("/dashboard")
 
 # ---------------- LOGOUT ----------------
+@app.route('/google9112badf97518326.html')
+def verify():
+    return send_from_directory('static', 'google9112badf97518326.html')
 @app.route("/logout")
 def logout():
     session.clear()
