@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PKB Tech Solutions</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <img src="/static/logo.png" class="logo">
+    PKB Tech Solutions
+</div>
+
+<!-- HERO SECTION -->
+<div class="hero">
+    <h1>Build. Debug. Deliver 🚀</h1>
+    <p>We help you complete projects, fix bugs & build powerful systems</p>
+    <a href="#form"><button>Get Started</button></a>
+</div>
+
+<!-- SERVICES -->
+<div class="services">
+    <h2>Our Services</h2>
+    <div class="service-box">
+        <div>💻 Debugging</div>
+        <div>📦 Projects</div>
+        <div>🌐 Full Stack</div>
+        <div>🤖 AI / ML</div>
+    </div>
+</div>
+
+<!-- FORM SECTION -->
+<div class="container" id="form">
+    <h2>Submit Your Request</h2>
+
+    <form action="/submit" method="POST" enctype="multipart/form-data">
+
+        <input type="text" name="name" placeholder="Your Name" required>
+
+        <input type="text" name="contact" placeholder="Phone / Email" required>
+
+        <select name="service" id="service" onchange="toggleOther()">
+            <option>Debugging</option>
+            <option>Project</option>
+            <option>Full Stack</option>
+            <option>AI/ML</option>
+            <option value="Other">Other</option>
+        </select>
+
+        <input type="text" id="otherService" name="other_service" placeholder="Enter your service" style="display:none;">
+
+        <input type="number" name="budget" placeholder="Budget (₹)">
+
+        <input type="date" name="deadline">
+
+        <textarea name="description" placeholder="Describe your requirement"></textarea>
+
+        <input type="file" name="file">
+
+        <button type="submit">🚀 Send Request</button>
+    </form>
+
+    <br>
+    <a href="/admin">🔐 Admin Login</a>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+    <p>© 2026 PKB Tech Solutions | Built with 💻</p>
+</div>
+
+<script>
+function toggleOther() {
+    let service = document.getElementById("service").value;
+    let other = document.getElementById("otherService");
+
+    if (service === "Other") {
+        other.style.display = "block";
+        other.required = true;
+    } else {
+        other.style.display = "none";
+        other.required = false;
+    }
+}
+</script>
+
+</body>
+</html>

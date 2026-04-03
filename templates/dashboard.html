@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link rel="icon" type="image/png" href="/static/favicon.png">
+</head>
+<body>
+
+<!-- NAVBAR -->
+<div class="navbar">
+    <img src="/static/logo.png" class="logo">
+    Admin Dashboard
+</div>
+
+<div class="dashboard">
+
+    <!-- STATS -->
+    <div class="stats">
+        <div class="card">
+            <h3>📩 Total Requests</h3>
+            <p>{{ total_requests }}</p>
+        </div>
+
+        <div class="card">
+            <h3>💰 Total Income</h3>
+            <p>₹{{ total_income }}</p>
+        </div>
+    </div>
+
+    <!-- LOGOUT -->
+    <div style="text-align:center; margin-bottom: 15px;">
+        <a href="/logout" class="btn-logout">Logout</a>
+    </div>
+
+    <!-- TABLE -->
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Service</th>
+            <th>Budget</th>
+            <th>Status</th>
+            <th>File</th>
+            <th>Action</th>
+        </tr>
+
+        {% for d in data %}
+        <tr>
+            <td>{{ d.name }}</td>
+            <td>{{ d.service }}</td>
+            <td>₹{{ d.budget }}</td>
+
+            <!-- STATUS COLOR -->
+            <td>
+                <span class="status {{ d.status }}">
+                    {{ d.status }}
+                </span>
+            </td>
+
+            <!-- FILE -->
+            <td>
+            {% if d.file %}
+                <a href="/download/{{ d.file }}" class="btn-download">Download</a>
+            {% else %}
+                No File
+            {% endif %}
+            </td>
+
+            <!-- ACTION BUTTONS -->
+            <td>
+                <a href="/update/{{ d._id }}/accepted" class="btn-accept">Accept</a>
+                <a href="/update/{{ d._id }}/completed" class="btn-complete">Complete</a>
+                <a href="/update/{{ d._id }}/rejected" class="btn-reject">Reject</a>
+            </td>
+        </tr>
+        {% endfor %}
+
+    </table>
+
+</div>
+
+</body>
+</html>
